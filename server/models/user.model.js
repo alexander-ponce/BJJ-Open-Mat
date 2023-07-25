@@ -19,6 +19,13 @@ const UserSchema = mongoose.Schema({
     required: true,
     enum : ["White", "Blue", "Purple", "Brown", "Black" ]
   },
+
+  phoneNumber: {
+    type: String,
+    required: true,
+    match: [/^\d{10}$/, 'Please enter a valid phone number'],
+},
+
   email: {
     type: String,
     required: true,

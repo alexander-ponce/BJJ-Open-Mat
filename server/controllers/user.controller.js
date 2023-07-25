@@ -21,7 +21,7 @@ const registerUser = async (req, res) => {
             data.confirmE = req.body.confirmE;
             const user = await data.save();
 
-            const payload = { _id: user._id, email: user.email, first: user.first, last:user.last, beltColor:user.beltColor}
+            const payload = { _id: user._id, email: user.email, first: user.first, last:user.last, beltColor:user.beltColor, phoneNumber:user.phoneNumber}
                 const token = jwt.sign(payload, SECRET)
                 res.cookie('userToken', token, { expires: new Date(Date.now() + 900000) })
                 .json({ successMessage: 'userToken: ', user: payload })
@@ -46,7 +46,7 @@ const loginUser = async (req, res) => {
             if (!validPassword) {
                 res.status(400).json({ errors: 'Invalid email/password' })
             } else {
-                const payload = { _id: user._id, email: user.email, first: user.first, last:user.last }
+                const payload = { _id: user._id, email: user.email, first: user.first, last:user.last, phoneNumber:user.phoneNumber }
                 const token = jwt.sign(payload, SECRET)
                 res.cookie('userToken', token, { expires: new Date(Date.now() + 900000) })
                 .json({ successMessage: 'userToken: ', user: payload })

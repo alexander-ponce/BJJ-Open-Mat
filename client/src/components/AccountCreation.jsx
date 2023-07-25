@@ -9,6 +9,7 @@ const AccountCreation = ({setUser}) => {
     const [confirmE, setConfirmE] = useState("")
     const [password, setPassword] = useState("")
     const [confirmP, setConfirmP] = useState("")
+    const [phoneNumber, setPhoneNumber] = useState("")
     // const [createdAt] = useState(Date())
     // const [updatedAt] = useState(Date())
     const [beltColors, setBeltColors] = useState(['', 'White', 'Blue', 'Purple', 'Brown', 'Black']);
@@ -24,7 +25,7 @@ const AccountCreation = ({setUser}) => {
         e.preventDefault()
         console.log('register form')
         axios.post('http://localhost:8000/api/register', {
-            first, last, email, confirmE, password, confirmP, beltColor     
+            first, last, email, confirmE, password, confirmP, beltColor, phoneNumber     
         }, { withCredentials: true })
             .then ( res => {
                 console.log("logged user" + res.data.user)
@@ -114,6 +115,15 @@ const AccountCreation = ({setUser}) => {
                               </option>
                           ))}
                       </select>
+                  </div>
+              </div>
+
+              {/* phone number */}
+              <div className="form-group row justify-content-center mb-3">
+                  <label className="col-sm-2 col-form-label">Phone Number (optional):</label>
+                  <div className="col-sm-6">
+                      {errors.phoneNumber && <span className="accent">{errors.phoneNumber.message}</span>}
+                      <input type='text' onChange={e=>setPhoneNumber(e.target.value)} className="form-control"/>
                   </div>
               </div>
   

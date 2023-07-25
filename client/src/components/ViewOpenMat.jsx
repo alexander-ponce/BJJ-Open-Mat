@@ -11,12 +11,29 @@ const ViewOpenMat = (props) => {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
-        name: '',
-        date: '',
-        time: '',
-        address: '',
-        creator: ''
-      });
+      name: '',
+      date: '',
+      time: '',
+      address: '',
+      creator: {
+          first: '',
+          last: '',
+          phoneNumber: ''
+      }
+  });
+  
+//     const [formData, setFormData] = useState({
+//     name: '',
+//     date: '',
+//     time: '',
+//     address: '',
+//     creator: {
+//         first: '',
+//         last: '',
+//         phoneNumber: ''
+//     }
+// });
+
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/openmats/${id}`)
@@ -29,21 +46,18 @@ const ViewOpenMat = (props) => {
     }, []);
     //pass ID?? ^^
 
-
-
     useEffect(() => {
-        axios
-          .get(`http://localhost:8000/api/openmats/${id}`, { withCredentials: true })
-          .then(res => {
-            console.warn(res.data);
-            const { name, date, time, address, creator } = res.data;
-            setFormData({ name, date, time, address, creator });
-          })
-          .catch(err => {
-            console.log("Error fetching open mat: ", err);
-          });
-      }, [id]);
-
+      axios
+        .get(`http://localhost:8000/api/openmats/${id}`, { withCredentials: true })
+        .then(res => {
+          console.warn(res.data);
+          const { name, date, time, address, creator } = res.data;
+          setFormData({ name, date, time, address, creator });
+        })
+        .catch(err => {
+          console.log("Error fetching open mat: ", err);
+        });
+    }, [id]);
       
 
       const convertTo12HourFormat = (timeString) => {
@@ -70,6 +84,9 @@ const ViewOpenMat = (props) => {
 
                 <div>
                 <p className=''>Created by: {formData.creator.first} {formData.creator.last} </p>
+                </div>
+                <div>
+                <p className=''>Phone Number: {formData.creator.phoneNumber} </p>
                 </div>
 
                 </div>
