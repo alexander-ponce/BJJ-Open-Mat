@@ -22,8 +22,13 @@ const UserSchema = mongoose.Schema({
 
   phoneNumber: {
     type: String,
-    required: true,
+    // required: true,
     match: [/^\d{10}$/, 'Please enter a valid phone number'],
+},
+
+aboutMe: {
+  type: String,
+    minLength: [10, 'Must be at least 10 characters']
 },
 
   email: {

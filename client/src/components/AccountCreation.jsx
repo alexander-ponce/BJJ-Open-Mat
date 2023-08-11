@@ -10,6 +10,7 @@ const AccountCreation = ({setUser}) => {
     const [password, setPassword] = useState("")
     const [confirmP, setConfirmP] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("")
+    const [aboutMe, setAboutMe] = useState("")
     // const [createdAt] = useState(Date())
     // const [updatedAt] = useState(Date())
     const [beltColors, setBeltColors] = useState(['', 'White', 'Blue', 'Purple', 'Brown', 'Black']);
@@ -25,7 +26,7 @@ const AccountCreation = ({setUser}) => {
         e.preventDefault()
         console.log('register form')
         axios.post('http://localhost:8000/api/register', {
-            first, last, email, confirmE, password, confirmP, beltColor, phoneNumber     
+            first, last, email, confirmE, password, confirmP, beltColor, phoneNumber, aboutMe     
         }, { withCredentials: true })
             .then ( res => {
                 console.log("logged user" + res.data.user)
@@ -126,6 +127,20 @@ const AccountCreation = ({setUser}) => {
                       <input type='text' onChange={e=>setPhoneNumber(e.target.value)} className="form-control"/>
                   </div>
               </div>
+
+              {/* about me */}
+              <div className="form-group row justify-content-center mb-3">
+                <label className="col-sm-2 col-form-label">About Me:</label>
+                <div className="col-sm-6">
+                    {errors.aboutMe && <span className="accent">{errors.aboutMe.message}</span>}
+                    <textarea 
+                        rows="5"  // defines the number of visible text lines, can be adjusted
+                        onChange={e => setAboutMe(e.target.value)} 
+                        className="form-control"
+                        placeholder="Tell us about yourself...">
+                    </textarea>
+                </div>
+            </div>
   
               <div className="form-group justify-content-center">
                   <input type='submit' value='Submit' className="btn btn-primary mt-3"/>
