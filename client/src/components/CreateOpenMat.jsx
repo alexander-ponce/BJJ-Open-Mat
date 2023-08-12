@@ -6,6 +6,8 @@ import axios from 'axios';
 const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 
 
+
+
 function MyForm(props) {
     const autocompleteInputRef = useRef(null);
     const {user, setUser} = props;
@@ -13,10 +15,13 @@ function MyForm(props) {
         name: '',
         date: '',
         time: '',
-        address: ''
+        address: '',
+        matFee: ''
     });
     const navigate = useNavigate();
     const [errors, setErrors] = useState('')
+    const [hasMatFee, setHasMatFee] = useState(false);
+    const [matFee, setMatFee] = useState('');
 
     // useEffect(() => {
     //     axios
@@ -100,6 +105,15 @@ function MyForm(props) {
 
     const handleSubmit = e => {
         e.preventDefault();
+
+        // If hasMatFee is true and matFee is empty, show an error
+    if (hasMatFee && !formData.matFee) {
+        setErrors(prevErrors => ({
+            ...prevErrors,
+            matFee: { message: "Mat fee is required." }
+        }));
+        return;
+    }
         axios.post('http://localhost:8000/api/createopenmat', formData, { withCredentials: true }) 
         // axios.post('/api/createopenmat', formData) 
         .then (res => {
@@ -177,6 +191,37 @@ function MyForm(props) {
                     {errors.address && <div className="invalid-feedback">{errors.address.message}</div>}
                 </div>
             </div>
+
+
+
+            <div className='form-group row justify-content-center'>
+    <label htmlFor="hasMatFee" className="col-sm-2 col-form-label">Mat Fee?</label>
+    <div className="col-sm-6">
+        <input
+            type="checkbox"
+            name="hasMatFee"
+            checked={hasMatFee}
+            onChange={e => setHasMatFee(e.target.checked)}
+        />
+    </div>
+</div>
+
+{hasMatFee && (
+    <div className='form-group row justify-content-center'>
+        <label htmlFor="matFee" className="col-sm-2 col-form-label">Fee Amount:</label>
+        <div className="col-sm-6">
+            <input
+                className={`form-control ${errors.matFee ? 'is-invalid' : ''}`}
+                type="number"
+                name="matFee"
+                value={formData.matFee}
+                onChange={handleInputChange}
+                required={hasMatFee}
+            />
+            {errors.matFee && <div className="invalid-feedback">{errors.matFee.message}</div>}
+        </div>
+    </div>
+)}
 
             <div className="form-group justify-content-center">
                 <button type="submit" className='btn btn-secondary mt-3'>Submit</button>

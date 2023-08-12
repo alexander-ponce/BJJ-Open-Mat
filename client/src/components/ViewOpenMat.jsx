@@ -15,6 +15,7 @@ const ViewOpenMat = (props) => {
       date: '',
       time: '',
       address: '',
+      matFee: '',
       creator: {
           first: '',
           last: '',
@@ -51,8 +52,8 @@ const ViewOpenMat = (props) => {
         .get(`http://localhost:8000/api/openmats/${id}`, { withCredentials: true })
         .then(res => {
           console.warn(res.data);
-          const { name, date, time, address, creator } = res.data;
-          setFormData({ name, date, time, address, creator });
+          const { name, date, time, address, matFee= 0, creator } = res.data;
+          setFormData({ name, date, time, address, matFee, creator });
         })
         .catch(err => {
           console.log("Error fetching open mat: ", err);
@@ -87,6 +88,9 @@ const ViewOpenMat = (props) => {
                 </div>
                 <div>
                 <p className=''>Phone Number: {formData.creator.phoneNumber} </p>
+                </div>
+                <div>
+                <p className=''>Mat Fee: ${formData.matFee} </p>
                 </div>
 
                 </div>

@@ -23,6 +23,12 @@ const OpenMatSchema = mongoose.Schema({
     minlength: 10
   },
 
+  matFee: {
+    type: String,
+    // required: [true, 'Must be at least 10 characters']
+
+  },
+
   creator: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
