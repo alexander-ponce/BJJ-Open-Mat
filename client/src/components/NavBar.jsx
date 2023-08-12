@@ -53,7 +53,8 @@ const NavBar = ({ user, setUser }) => {
           location.pathname === '/createopenmat' || 
           location.pathname === '/bjjfaq' ||
           location.pathname.startsWith('/editopenmat') ||
-          location.pathname.startsWith('/viewopenmat')
+          location.pathname.startsWith('/viewopenmat') ||
+          location.pathname.startsWith('/user')
         ) ? (
           <>
             <li className="nav-item active">

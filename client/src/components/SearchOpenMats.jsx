@@ -107,7 +107,7 @@ const SearchOpenMats = (props) => {
                     {
                     props.user._id === place.creator._id &&
                     <Link to={`/editopenmat/${place._id}`}>
-                        <button className='btn btn-warning'>Edit</button>
+                        <button className='btn btn-warning mx-2'>Edit</button>
                     </Link>
                     }
                     <Link className="btn btn-primary" to={`/viewopenmat/${place._id}`}> View</Link>
