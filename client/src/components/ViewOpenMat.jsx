@@ -90,7 +90,9 @@ const ViewOpenMat = (props) => {
                 <p className=''>Phone Number: {formData.creator.phoneNumber} </p>
                 </div>
                 <div>
-                <p className=''>Mat Fee: ${formData.matFee} </p>
+                {/* <p className=''>Mat Fee: ${formData.matFee} </p> */}
+                <p className=''>Mat Fee: ${formData.matFee || 0} </p>
+
                 </div>
 
                 </div>
