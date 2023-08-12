@@ -9,6 +9,7 @@ import Login from './components/Login';
 import LandingPage from './components/LandingPage';
 import SearchOpenMats from './components/SearchOpenMats';
 import ViewOpenMat from './components/ViewOpenMat';
+import UserBio from './components/UserBio';
 import FAQ from './components/FAQ';
 
 import { DndProvider } from 'react-dnd';
@@ -38,6 +39,7 @@ function App() {
               <Route exact path ="/login" element={<Login  setTitle={setTitle} user={user} setUser={setUser}/>} />
               <Route exact path ="/searchopenmats" element={<SearchOpenMats  setTitle={setTitle} user={user}/>} />
               <Route exact path ="/viewopenmat/:id" element={<ViewOpenMat  setTitle={setTitle} user={user}/>} />
+              <Route exact path ="/user/:id" element={<UserBio  setTitle={setTitle} user={user} setUser={setUser}/>} />
               <Route exact path ="/editopenmat/:id" element={<EditOpenMat  setTitle={setTitle} user={user} />} />
               {/* <Route exact path ="/searchopenmats" element={<SearchOpenMats  setTitle={setTitle} />} /> */}
               <Route exact path ="/logout" element={<SearchOpenMats />} />

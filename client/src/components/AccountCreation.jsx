@@ -109,13 +109,14 @@ const AccountCreation = ({setUser}) => {
                   <label className="col-sm-2 col-form-label">Belt Color:</label>
                   <div className="col-sm-6">
                       {errors.beltColor && <span className="accent">{errors.beltColor.message}</span>}
-                      <select value={beltColor} onChange={handleBeltColorChange} className="form-control">
-                          {beltColors.map((color, index) => (
-                              <option key={index} value={color}>
-                                  {color}
-                              </option>
-                          ))}
-                      </select>
+                      <select value={beltColor} onChange={handleBeltColorChange} className="form-control" >
+                        <option value="" disabled hidden>Select a belt color...</option>
+                        {beltColors.map((color, index) => (
+                            <option key={index} value={color}>
+                                {color}
+                            </option>
+                        ))}
+                    </select>
                   </div>
               </div>
 

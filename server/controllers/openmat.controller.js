@@ -37,7 +37,7 @@ module.exports = {
         }
 
         OpenMat.find(query)
-    .populate('creator', 'first last phoneNumber')
+    .populate('creator', 'first last phoneNumber beltColor aboutMe')
     .then(allOpenMats => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const formattedMats = allOpenMats.map(mat => {
@@ -55,7 +55,7 @@ module.exports = {
     // Read (one)
     findOneSingleOpenMat: (req, res) => {
         OpenMat.findById(req.params.id)
-        .populate('creator', 'first last phoneNumber')
+        .populate('creator', 'first last phoneNumber beltColor aboutMe')
         .then(oneOpenMat => res.json(oneOpenMat))
         .catch(err => res.json(err))
     },
@@ -91,7 +91,7 @@ module.exports = {
       
         OpenMat.find(query)
         //   .populate('creator', 'first', 'last')
-          .populate('creator', 'first last phoneNumber')
+          .populate('creator', 'first last phoneNumber beltColor aboutMe')
           .then(openMats => res.json(openMats))
           .catch(err => res.json(err));
       }

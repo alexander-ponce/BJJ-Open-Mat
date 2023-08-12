@@ -6,7 +6,6 @@ import { useParams, Link, useNavigate} from "react-router-dom";
 // import { useDrag } from 'react-dnd';
 // import DraggableImage from './DraggableImage';
 // import DropTarget from './DropTarget';
-    
 
 const SearchOpenMats = (props) => {
   const [events, setEvents] = useState([]);
@@ -119,7 +118,10 @@ const SearchOpenMats = (props) => {
                     <td className='text-white'>{convertTo12HourFormat(place.time)}</td>
 
                     {/* <td>{place.state}</td> */}
-                    <td className='text-white'>{place.creator.first} {place.creator.last} </td>
+                    <Link className="btn btn-primary" to={`/user/${place._id}`}>
+
+                        <td className='text-white'>{place.creator.first} {place.creator.last} </td>
+                    </Link>
                     {/* <td><button className="btn btn-danger" onClick={(e)=>{deleteStore(place._id)}}> Delete </button></td> */}
                 </tr>
                 )})}       

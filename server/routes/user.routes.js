@@ -12,16 +12,6 @@ module.exports = function(app){
     app.get('/api/logout', UserController.logout);
     app.get('/api/user-current', UserController.getLogged);
     app.put('/api/user/update', UserController.updateOne);
+    app.get('/user/:id', UserController.findOneUser);
+
 }
-
-
-// module.exports = app  => {
-//     // app.get('/api/test', CONTROLLER.index)
-//     app.post('/api/register', CONTROLLER.register)
-//     app.post('/api/login', CONTROLLER.login)
-//     // this route now has to be authenticated
-//     app.get("/api/users", authenticate, CONTROLLER.getAll);
-//     app.post('/api/logout', CONTROLLER.logout)
-//     app.get('/api/user-current', CONTROLLER.getLogged)
-//     app.put('/api/user/:id', CONTROLLER.updateOne)
-// }

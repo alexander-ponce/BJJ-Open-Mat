@@ -10,7 +10,18 @@ const ViewOpenMat = (props) => {
     const {id} = useParams(); 
     const navigate = useNavigate();
 
-    const [formData, setFormData] = useState({
+//     const [userData, setUserData] = useState({
+//       first: '',
+//       last: '',
+//       beltColor: '',
+//       phoneNumber: '',
+//       aboutMe: ''
+//   });
+
+
+// ****YOU ARE WORKING ON USING form data along with stuff
+
+const [formData, setFormData] = useState({
       name: '',
       date: '',
       time: '',
@@ -19,23 +30,34 @@ const ViewOpenMat = (props) => {
       creator: {
           first: '',
           last: '',
-          phoneNumber: ''
+          phoneNumber: '',
+          aboutMe: '',
+          beltColor: ''
       }
   });
 
-  
-//     const [formData, setFormData] = useState({
-//     name: '',
-//     date: '',
-//     time: '',
-//     address: '',
+// const [userData, setUserData] = useState({
+    
 //     creator: {
 //         first: '',
 //         last: '',
-//         phoneNumber: ''
+//         phoneNumber: '',
+//         beltColor: ''
 //     }
 // });
 
+  useEffect(() => {
+    axios.get(`http://localhost:8000/api/user/${id}`)
+        .then( res => {
+            console.log(res.data);
+            // setUserData(res.data);
+            setOpenMat(res.data);
+
+
+        })
+        
+        .catch( err => console.log(err) );
+}, []);
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/openmats/${id}`)
@@ -46,6 +68,8 @@ const ViewOpenMat = (props) => {
             })
             .catch( err => console.log(err) );
     }, []);
+    
+
     //pass ID?? ^^
 
     useEffect(() => {
@@ -60,45 +84,31 @@ const ViewOpenMat = (props) => {
           console.log("Error fetching open mat: ", err);
         });
     }, [id]);
-      
-
-      const convertTo12HourFormat = (timeString) => {
-        const timeParts = timeString.split(':');
-        let hours = parseInt(timeParts[0], 10);
-        const minutes = timeParts[1];
-        const ampm = hours >= 12 ? 'PM' : 'AM';
-        hours = hours % 12;
-        hours = hours ? hours : 12; // the hour '0' should be '12'
-        return hours + ':' + minutes + ' ' + ampm;
-      }
-      
 
 
   return (
     <div>
 
-        <h2 className="mt-4">{formData.name}</h2>
-
-                <p className="mt-4"> </p>
-                <p>Address: {formData.address}</p>
-                <p>Date: {formData.date.substring(0,10)}</p>
-                <p>Time: {convertTo12HourFormat(formData.time)}</p>
+        <h2 className="mt-4">{formData.creator.first} {formData.creator.last}</h2>
 
                 <div>
-                <p className=''>Created by: {formData.creator.first} {formData.creator.last} </p>
+                    <p className="mt-4"> </p> 
                 </div>
                 <div>
-                <p className=''>Phone Number: {formData.creator.phoneNumber} </p>
+                    <p>Belt Color: {formData.creator.beltColor}</p>
                 </div>
                 <div>
-                <p className=''>Mat Fee: {formData.matFee && formData.matFee !== 0 ? `$${formData.matFee}` : 'Free'} </p>
-
-                {/* <p className=''>Mat Fee: ${formData.matFee} </p> */}
-                {/* <p className=''>Mat Fee: {"$" + formData.matFee || "free"} </p> */}
-
+                    <p>Phone Number: {(formData.creator.phoneNumber)}</p>
                 </div>
+                
 
+                <div>
+                <p className=''>About Me:  </p>
+                <p>{formData.creator.aboutMe}</p>
                 </div>
+                
+
+    </div>
             )
 }
 

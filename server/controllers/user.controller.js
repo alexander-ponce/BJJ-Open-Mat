@@ -79,6 +79,26 @@ const updateOne = async (req, res) => {
         .then( e => {res.json(e)} )
         .catch( e => res.json(e) )
 }
+
+const findOneUser = async (req, res) => {
+    try {
+        // Use req.params.id to get the user ID from the URL
+        // const user = await Model.findOne({ _id: req.params.id });
+        const user = await Model.findOne({ _id: req.user.id });
+
+
+        // If the user is not found, return a 404 error
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Return the user data
+        res.json(user);
+    } catch (error) {
+        res.status(400).json({ errors: 'Failed to find the user' })
+    }
+};
+
 // export
-module.exports = { index, registerUser, loginUser, logout, getLogged, updateOne }
+module.exports = { index, registerUser, loginUser, logout, getLogged, updateOne, findOneUser }
 
