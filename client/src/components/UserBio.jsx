@@ -10,23 +10,9 @@ const ViewOpenMat = (props) => {
     const {id} = useParams(); 
     const navigate = useNavigate();
 
-//     const [userData, setUserData] = useState({
-//       first: '',
-//       last: '',
-//       beltColor: '',
-//       phoneNumber: '',
-//       aboutMe: ''
-//   });
-
-
-// ****YOU ARE WORKING ON USING form data along with stuff
 
 const [formData, setFormData] = useState({
-      name: '',
-      date: '',
-      time: '',
-      address: '',
-      matFee: '',
+    
       creator: {
           first: '',
           last: '',
@@ -36,15 +22,6 @@ const [formData, setFormData] = useState({
       }
   });
 
-// const [userData, setUserData] = useState({
-    
-//     creator: {
-//         first: '',
-//         last: '',
-//         phoneNumber: '',
-//         beltColor: ''
-//     }
-// });
 
   useEffect(() => {
     axios.get(`http://localhost:8000/api/user/${id}`)

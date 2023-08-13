@@ -7,10 +7,16 @@ import { useParams, Link, useNavigate} from "react-router-dom";
 // import DraggableImage from './DraggableImage';
 // import DropTarget from './DropTarget';
 
+
 const SearchOpenMats = (props) => {
   const [events, setEvents] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
+
+  SearchOpenMats.defaultProps = {
+    user: {}
+  };
+  
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
@@ -96,6 +102,7 @@ const SearchOpenMats = (props) => {
               {props.user._id}
             {
                   Array.isArray(events) && events.map((place, idx) => {
+                    
                     
                     return (
                 <tr key={idx}>

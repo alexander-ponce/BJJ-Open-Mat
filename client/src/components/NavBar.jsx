@@ -2,22 +2,40 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate, useLocation} from 'react-router-dom'
 import axios from 'axios';
 
+// const NavBar = () => {
 const NavBar = ({ user, setUser }) => {
     const [navbarOpen, setNavbarOpen] = useState(false);
     const location = useLocation();
     const navigate = useNavigate()
+    // const [user, setUser] = useState({});
     
+    // useEffect(() => {
+    //     axios
+    //         .get(`http://localhost:8000/api/user-current`, { withCredentials: true })
+    //         .then(res => {
+    //             setUser(res.data);
+    //         })
+    //         .catch(err => {
+    //             console.log("current user error: " + err)
+    //             setUser({})
+    //     });
+    // }, []);
+
     useEffect(() => {
-        axios
-            .get(`http://localhost:8000/api/user-current`, { withCredentials: true })
-            .then(res => {
-                setUser(res.data);
-            })
-            .catch(err => {
-                console.log("current user error: " + err)
-                setUser({})
-        });
-    }, []);
+          axios
+              .get(`http://localhost:8000/api/user-current`, { withCredentials: true })
+              .then(res => {
+                console.log("current user" + res.data)
+                  setUser(res.data);
+        
+              })
+              .catch(err => {
+                  console.log("current user error: " + err);
+                  setUser({});
+                
+              });
+            
+  }, []);
 
 
     const handleToggle = () => {
@@ -29,8 +47,8 @@ const NavBar = ({ user, setUser }) => {
     }
 
     const handleLogout = (e) => {
-        e.preventDefault();
-        console.log("attempting to logout");
+        // e.preventDefault();
+        console.log("attempting to logout"); 
         axios
             .get('http://localhost:8000/api/logout', { withCredentials: true })
             .then(res => {
