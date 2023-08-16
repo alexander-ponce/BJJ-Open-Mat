@@ -12,9 +12,9 @@ import ViewOpenMat from './components/ViewOpenMat';
 import UserBio from './components/UserBio';
 import FAQ from './components/FAQ';
 
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
-import { useDrag } from 'react-dnd';
+// import { DndProvider } from 'react-dnd';
+// import { HTML5Backend } from 'react-dnd-html5-backend';
+// import { useDrag } from 'react-dnd';
 
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
   const [user, setUser] = useState({})
 
   return (
-    <DndProvider backend={HTML5Backend}>
+    // <DndProvider backend={HTML5Backend}>
     <div className="App">
 
           <BrowserRouter>

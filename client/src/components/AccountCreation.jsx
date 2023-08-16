@@ -11,8 +11,6 @@ const AccountCreation = ({setUser}) => {
     const [confirmP, setConfirmP] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("")
     const [aboutMe, setAboutMe] = useState("")
-    // const [createdAt] = useState(Date())
-    // const [updatedAt] = useState(Date())
     const [beltColors, setBeltColors] = useState(['', 'White', 'Blue', 'Purple', 'Brown', 'Black']);
     const [beltColor, setBeltColor] = useState('')
     const [errors, setErrors] = useState('')
