@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useParams, Link, useNavigate} from "react-router-dom";
-// import { DndProvider } from 'react-dnd';
-// import { HTML5Backend } from 'react-dnd-html5-backend';
-// import { useDrag } from 'react-dnd';
-// import DraggableImage from './DraggableImage';
-// import DropTarget from './DropTarget';
-
 
 const SearchOpenMats = (props) => {
   const [events, setEvents] = useState([]);

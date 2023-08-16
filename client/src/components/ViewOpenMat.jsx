@@ -23,19 +23,6 @@ const ViewOpenMat = (props) => {
       }
   });
 
-  
-//     const [formData, setFormData] = useState({
-//     name: '',
-//     date: '',
-//     time: '',
-//     address: '',
-//     creator: {
-//         first: '',
-//         last: '',
-//         phoneNumber: ''
-//     }
-// });
-
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/openmats/${id}`)
