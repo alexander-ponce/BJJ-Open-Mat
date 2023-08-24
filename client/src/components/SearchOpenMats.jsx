@@ -7,11 +7,6 @@ const SearchOpenMats = (props) => {
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
-  SearchOpenMats.defaultProps = {
-    user: {}
-  };
-  
-
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   }
@@ -123,7 +118,6 @@ const SearchOpenMats = (props) => {
 
                         <td className='text-white'>{place.creator.first} {place.creator.last} </td>
                     </Link>
-                    {/* <td><button className="btn btn-danger" onClick={(e)=>{deleteStore(place._id)}}> Delete </button></td> */}
                 </tr>
                 )})}       
             </tbody>

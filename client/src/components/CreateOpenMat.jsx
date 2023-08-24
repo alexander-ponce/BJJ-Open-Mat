@@ -46,33 +46,6 @@ function MyForm(props) {
                 {"fields": ["formatted_address"]}
             );
 
-    //         autocomplete.addListener('place_changed', () => {
-    //             const selectedPlace = autocomplete.getPlace();
-                
-    // if (selectedPlace.address_components) {
-    // const address = selectedPlace.formatted_address;
-    // const components = selectedPlace.address_components;
-    
-    // const cityComponent = components.find(c => c.types.includes('locality'));
-    // const city = cityComponent ? cityComponent.long_name : "";
-
-    // const stateComponent = components.find(c => c.types.includes('administrative_area_level_1'));
-    // const state = stateComponent ? stateComponent.short_name : "";
-
-    // const zipComponent = components.find(c => c.types.includes('postal_code'));
-    // const zip = zipComponent ? zipComponent.long_name : "";
-              
-    //             if (address) {
-    //               setFormData(prevState => ({
-    //                 ...prevState,
-    //                 address, city, state, zip
-    //               }));
-    //             }
-    //         }
-    //         });
-    //     });
-    // }, []);
-
             autocomplete.addListener('place_changed', () => {
                 const selectedPlace = autocomplete.getPlace();
                 const address = selectedPlace.formatted_address;

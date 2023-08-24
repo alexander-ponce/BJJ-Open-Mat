@@ -22,15 +22,12 @@ const [formData, setFormData] = useState({
       }
   });
 
-
   useEffect(() => {
     axios.get(`http://localhost:8000/api/user/${id}`)
         .then( res => {
             console.log(res.data);
             // setUserData(res.data);
             setOpenMat(res.data);
-
-
         })
         
         .catch( err => console.log(err) );
@@ -61,8 +58,6 @@ const [formData, setFormData] = useState({
           console.log("Error fetching open mat: ", err);
         });
     }, [id]);
-
-
   return (
     <div>
 
@@ -78,7 +73,6 @@ const [formData, setFormData] = useState({
                     <p>Phone Number: {(formData.creator.phoneNumber)}</p>
                 </div>
                 
-
                 <div>
                 <p className=''>About Me:  </p>
                 <p>{formData.creator.aboutMe}</p>

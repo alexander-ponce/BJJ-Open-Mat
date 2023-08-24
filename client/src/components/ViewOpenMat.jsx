@@ -58,32 +58,25 @@ const ViewOpenMat = (props) => {
         hours = hours ? hours : 12; // the hour '0' should be '12'
         return hours + ':' + minutes + ' ' + ampm;
       }
-      
-
 
   return (
     <div>
 
         <h2 className="mt-4">{formData.name}</h2>
-
                 <p className="mt-4"> </p>
                 <p>Address: {formData.address}</p>
                 <p>Date: {formData.date.substring(0,10)}</p>
                 <p>Time: {convertTo12HourFormat(formData.time)}</p>
 
                 <div>
-                <p className=''>Created by: {formData.creator.first} {formData.creator.last} </p>
-                </div>
-                <div>
-                <p className=''>Phone Number: {formData.creator.phoneNumber} </p>
-                </div>
-                <div>
-                <p className=''>Mat Fee: {formData.matFee && formData.matFee !== 0 ? `$${formData.matFee}` : 'Free'} </p>
-
-                {/* <p className=''>Mat Fee: ${formData.matFee} </p> */}
-                {/* <p className=''>Mat Fee: {"$" + formData.matFee || "free"} </p> */}
-
-                </div>
+                  <p className=''>Created by: {formData.creator.first} {formData.creator.last} </p>
+                  </div>
+                  <div>
+                  <p className=''>Phone Number: {formData.creator.phoneNumber} </p>
+                  </div>
+                  <div>
+                  <p className=''>Mat Fee: {formData.matFee && formData.matFee !== 0 ? `$${formData.matFee}` : 'Free'} </p>
+                  </div>
 
                 </div>
             )
